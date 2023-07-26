@@ -3,6 +3,8 @@
 # Product-specific compile-time definitions.
 #
 
+DEVICE_PATH := device/valve/jupiter
+
 # The generic product target doesn't have any hardware-specific pieces.
 TARGET_NO_BOOTLOADER := true
 TARGET_CPU_ABI := x86_64

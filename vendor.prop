@@ -1,0 +1,4 @@
+# Mesa
+ro.hardware.vulkan=radv
+ro.hardware.gralloc=gbm
+ro.hardware.hwcomposer=drm

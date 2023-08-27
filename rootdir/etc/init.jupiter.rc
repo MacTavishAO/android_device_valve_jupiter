@@ -1,0 +1,40 @@
+on early-init
+    export EGL_LOG_LEVEL info
+    export MESA_LOADER_DRIVER_OVERRIDE radeonsi
+    export MESA_GLES_VERSION_OVERRIDE 3.0
+    # Sensors HAL expects it here
+    symlink /sys/bus/iio/devices/iio:device0 /dev/iio:device0
+
+on fs
+    mount_all /fstab.jupiter
+    swapon_all /fstab.jupiter
+
+on post-fs-data
+    # Create the directories used by the Wireless subsystem
+    mkdir /data/vendor/wifi 0771 wifi wifi
+    mkdir /data/vendor/wifi/wpa 0770 wifi wifi
+    mkdir /data/vendor/wifi/wpa/sockets 0770 wifi wifi
+    mkdir /data/misc/dhcp 0770 dhcp dhcp
+    mkdir /data/misc/hcid 0770 bluetooth bluetooth
+
+    mkdir /data/system 0775 system system
+    chown wifi wifi /data/misc/wifi/wpa_supplicant.conf
+
+    # Set indication (checked by vold) that we have finished this action
+    setprop vold.post_fs_data_done 1
+
+service logger /system/bin/logcat -b all -D -f /cache/boot_log.txt
+    class main
+    user root
+    group root system
+    disabled
+    oneshot
+
+on post-fs-data
+    # Clear existing log and start the service
+    rm /cache/boot_log.txt
+    start logger
+
+on property:sys.boot_completed=1
+    # Stop the logger service
+    stop logger

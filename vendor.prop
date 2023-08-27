@@ -1,4 +1,41 @@
+# Audio
+ro.hardware.audio.primary=x86
+
+# Bluetooth
+#bluetooth.device.class_of_device=90,2,12
+#bluetooth.profile.a2dp.source.enabled=true
+#bluetooth.profile.asha.central.enabled=true
+#bluetooth.profile.avrcp.target.enabled=true
+#bluetooth.profile.bas.client.enabled=true
+#bluetooth.profile.gatt.enabled=true
+#bluetooth.profile.hfp.ag.enabled=true
+#bluetooth.profile.hid.device.enabled=true
+#bluetooth.profile.hid.host.enabled=true
+#bluetooth.profile.map.server.enabled=true
+#bluetooth.profile.opp.enabled=true
+#bluetooth.profile.pan.nap.enabled=true
+#bluetooth.profile.pan.panu.enabled=true
+#bluetooth.profile.pbap.server.enabled=true
+#bluetooth.profile.sap.server.enabled=true
+
 # Mesa
-ro.hardware.vulkan=radv
-ro.hardware.gralloc=gbm
-ro.hardware.hwcomposer=drm
+ro.hardware.vulkan=radeon
+ro.hardware.gralloc=minigbm
+ro.hardware.hwcomposer=drm_minigbm_celadon
+ro.hardware.egl=mesa
+ro.opengles.version=196608
+media.sf.omx-plugin=libffmpeg_omx.so
+media.sf.extractor-plugin=libffmpeg_extractor.so
+debug.stagefright.ccodec=0
+
+# Power
+ro.hardware.power=x86
+
+# Sensors
+ro.hardware.sensors=iio
+
+# Wifi
+wifi.interface=wlan0
+
+# NoRIL
+ro.radio.noril=yes
